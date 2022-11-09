@@ -10,6 +10,9 @@ def test_spoof(att_pkt):
    count++
  except:
   pass
+ 
+ #def check_spoof(chk_ip, chk_ttl):
+  
 
 def main():
  sniff(prn=test_spoof, store=0)
