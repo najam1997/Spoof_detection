@@ -1,5 +1,7 @@
 from scapy.all import *
 
+ttl_set = {}
+
 def test_spoof(att_pkt):
  try:
   count = 0
@@ -12,6 +14,8 @@ def test_spoof(att_pkt):
   pass
  
  #def check_spoof(chk_ip, chk_ttl):
+  #for chk_ip not in ttl_set:
+   
   
 
 def main():
