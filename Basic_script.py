@@ -1,4 +1,7 @@
-from scapy.all import *
+import argparse
+from scapy.all import sr1, sniff, conf
+from scapy.layers.inet import IP, ICMP
+from IPy import IP as IP2
 
 ttl_set = {}
 
@@ -13,9 +16,13 @@ def test_spoof(att_pkt):
  except:
   pass
  
- #def check_spoof(chk_ip, chk_ttl):
-  #for chk_ip not in ttl_set:
-   
+def check_TTL(chk_ip, chk_ttl):
+    if IP2(chk_ip).iptype() == 'PRIVATE':
+        return
+
+    if chk_ip not in ttl_set:
+        att_pkt = sr1(IP(dst=ipsrc) / ICMP(), retry=0, timeout=1, verbose=0)
+        ttl_values[chk_ip] = att_pkt.ttl
   
 
 def main():
